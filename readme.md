@@ -16,13 +16,13 @@ Installation
 
 ### Installing via Composer
 
-The recommended way to install php-scheduler is through
+The recommended way to install crontask is through
 [Composer](http://getcomposer.org).
 
-Next, run the Composer command to install the latest version of php-scheduler:
+Next, run the Composer command to install the latest version of crontask:
 
 ```bash
-composer require visavi/cron-tasks
+composer require visavi/crontask
 ```
 
 After installing, you need to require Composer's autoloader:
@@ -66,6 +66,14 @@ $taskList->addTask((new HelloDailyTask)->setExpression('@hourly'));
 
 // Add task to run at 12:00 every Monday
 $taskList->addTask((new ShellMondayTask)->setExpression('12 0 * * 1'));
+
+// or
+$taskList->addTasks([
+    (new ShellMondayTask)->setExpression('12 0 * * 1'),
+    (new HelloDailyTask)->setExpression('@hourly'),
+    (new ShellMondayTask)->setExpression('12 0 * * 1'),
+]);
+
 
 $taskList->run();
 
