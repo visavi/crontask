@@ -58,15 +58,42 @@ class ShellMondayTask extends \Crontask\Tasks\Shell
 
 $taskList = new \Crontask\TaskList;
 
-// Add task to run at 15:04 every day
-$taskList->addTask((new HelloDailyTask)->setExpression('4 15 * * *'));
+// Add task to run at 12:00 every day
+$taskList->addTask((new HelloDailyTask)->setExpression('12 0 * * *'));
 
-// Add task to run at 15:04 every Monday
-$taskList->addTask((new ShellMondayTask)->setExpression('4 15 * * 1'));
+// Add task to run every hour
+$taskList->addTask((new HelloDailyTask)->setExpression('@hourly'));
+
+// Add task to run at 12:00 every Monday
+$taskList->addTask((new ShellMondayTask)->setExpression('12 0 * * 1'));
 
 $taskList->run();
 
 $output = $taskList->getOutput();
 ```
 
+CRON Expressions
+----------------
 
+A CRON expression is a string representing the schedule for a particular command to execute.  The parts of a CRON schedule are as follows:
+
+    *    *    *    *    *
+    -    -    -    -    -
+    |    |    |    |    |
+    |    |    |    |    |
+    |    |    |    |    +----- day of week (0 - 7) (Sunday=0 or 7)
+    |    |    |    +---------- month (1 - 12)
+    |    |    +--------------- day of month (1 - 31)
+    |    +-------------------- hour (0 - 23)
+    +------------------------- min (0 - 59)
+
+Mappings
+--------
+```
+@yearly   => 0 0 1 1 *
+@annually => 0 0 1 1 *
+@monthly  => 0 0 1 * *
+@weekly   => 0 0 * * 0
+@daily    => 0 0 * * *
+@hourly   => 0 * * * *
+```

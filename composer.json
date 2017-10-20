@@ -1,7 +1,7 @@
 {
     "name": "visavi/crontask",
     "description": "Simple PHP cron tasks",
-    "keywords": ["php", "cron", "scheduler", "task"],
+    "keywords": ["php", "cron", "crontab", "scheduler", "task"],
     "homepage": "http://visavi.net",
     "license": "MIT",
     "authors": [

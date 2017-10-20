@@ -1,4 +1,5 @@
 <?php
+
 namespace Crontask\Tasks;
 
 class Shell extends Task
@@ -22,6 +23,7 @@ class Shell extends Task
         exec($this->getCommand().' '.implode(' ', $this->arguments), $output, $result);
 
         $this->setOutput($output);
+
         return $result;
     }
 
@@ -32,6 +34,7 @@ class Shell extends Task
     public function setCommand($command)
     {
         $this->command = $command;
+
         return $this;
     }
 
@@ -50,6 +53,7 @@ class Shell extends Task
     public function addArgument($argument)
     {
         $this->arguments[] = $argument;
+
         return $this;
     }
 
@@ -60,5 +64,4 @@ class Shell extends Task
     {
         return $this->arguments;
     }
-
 }

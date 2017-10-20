@@ -1,7 +1,8 @@
 <?php
 namespace Crontask\Tasks;
 
-use Crontask\Interfaces\Task as TaskInterface;
+use Cron\CronExpression;
+use Crontask\Interfaces\TaskInterface;
 
 abstract class Task implements TaskInterface
 {
@@ -28,6 +29,7 @@ abstract class Task implements TaskInterface
     public function setExpression($expression)
     {
         $this->expression = $expression;
+
         return $this;
     }
 
@@ -48,6 +50,7 @@ abstract class Task implements TaskInterface
     public function setOutput($output)
     {
         $this->output = $output;
+
         return $this;
     }
 
@@ -67,12 +70,12 @@ abstract class Task implements TaskInterface
     public function isRequired()
     {
         $expression = $this->getExpression();
-        if (!$expression) {
+        if (! $expression) {
             return false;
         }
 
-        $cron = \Cron\CronExpression::factory($expression);
+        $cron = CronExpression::factory($expression);
+
         return $cron->isDue();
     }
-
 }

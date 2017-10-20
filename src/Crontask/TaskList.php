@@ -1,11 +1,10 @@
 <?php
 namespace Crontask;
 
-use Crontask\Interfaces\Task as TaskInterface;
+use Crontask\Interfaces\TaskInterface;
 
 class TaskList
 {
-
     /**
      * @var array
      */
@@ -17,25 +16,33 @@ class TaskList
     protected $output = [];
 
     /**
+     * Create new tasks list
+     *
+     * @param array $tasks
+     */
+    public function addTasks($tasks)
+    {
+        foreach ($tasks as $task) {
+            $this->addTask($task);
+        }
+    }
+
+    /**
      * Adds a new task to the list
+     *
      * @param TaskInterface $task
      * @return TaskList $this
      */
     public function addTask(TaskInterface $task)
     {
         $this->tasks[] = $task;
+
         return $this;
     }
 
     /**
-     * @param array $tasks
-     */
-    public function setTasks($tasks)
-    {
-        $this->tasks = $tasks;
-    }
-
-    /**
+     * Get Tasks
+     *
      * @return array
      */
     public function getTasks()
@@ -44,6 +51,8 @@ class TaskList
     }
 
     /**
+     * Get Output
+     *
      * @return array
      */
     public function getOutput()
@@ -53,13 +62,14 @@ class TaskList
 
     /**
      * Runs any due task, returning an array containing the output from each task
+     *
      * @return array
      */
     public function run()
     {
         $this->output = [];
 
-        foreach ($this->tasks AS $task) {
+        foreach ($this->tasks as $task) {
             if ($task->isRequired()) {
 
                 $result = $task->run();
