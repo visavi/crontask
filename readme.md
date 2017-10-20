@@ -69,11 +69,10 @@ $taskList->addTask((new ShellMondayTask)->setExpression('12 0 * * 1'));
 
 // or
 $taskList->addTasks([
-    (new ShellMondayTask)->setExpression('12 0 * * 1'),
+    (new HelloDailyTask)->setExpression('12 0 * * 1'),
     (new HelloDailyTask)->setExpression('@hourly'),
     (new ShellMondayTask)->setExpression('12 0 * * 1'),
 ]);
-
 
 $taskList->run();
 
