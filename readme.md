@@ -75,8 +75,6 @@ $taskList->addTasks([
 ]);
 
 $taskList->run();
-
-$output = $taskList->getOutput();
 ```
 
 CRON Expressions
