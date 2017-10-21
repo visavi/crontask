@@ -56,7 +56,7 @@ class ShellMondayTask extends \Crontask\Tasks\Shell
     protected $command = "echo Hello Monday";
 }
 
-$taskList = new \Crontask\TaskList;
+$taskList = new \Crontask\TaskList();
 
 // Add task to run at 12:00 every day
 $taskList->addTask((new HelloDailyTask)->setExpression('12 0 * * *'));
