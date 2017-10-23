@@ -70,6 +70,7 @@ abstract class Task implements TaskInterface
     public function isRequired()
     {
         $expression = $this->getExpression();
+
         if (! $expression) {
             return false;
         }
