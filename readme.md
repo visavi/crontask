@@ -1,6 +1,11 @@
 Cron tasks
 ============
 
+[![Total Downloads](https://poser.pugx.org/visavi/crontask/downloads)](https://packagist.org/packages/visavi/crontask)
+[![Latest Stable Version](https://poser.pugx.org/visavi/crontask/v/stable)](https://packagist.org/packages/visavi/crontask)
+[![Latest Unstable Version](https://poser.pugx.org/visavi/crontask/v/unstable)](https://packagist.org/packages/visavi/crontask)
+[![License](https://poser.pugx.org/visavi/crontask/license)](https://packagist.org/packages/visavi/crontask)
+
 Introduction
 ------------
 
@@ -102,3 +107,7 @@ Mappings
 @daily    => 0 0 * * *
 @hourly   => 0 * * * *
 ```
+
+### License
+
+The class is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
