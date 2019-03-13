@@ -1,4 +1,5 @@
 <?php
+
 namespace Crontask\Tasks;
 
 use Cron\CronExpression;
@@ -23,10 +24,11 @@ abstract class Task implements TaskInterface
 
     /**
      * Sets a cron expression
+     *
      * @param string $expression
      * @return Task $this
      */
-    public function setExpression($expression)
+    public function setExpression($expression): Task
     {
         $this->expression = $expression;
 
@@ -35,19 +37,21 @@ abstract class Task implements TaskInterface
 
     /**
      * Gets the current cron expression
+     *
      * @return string
      */
-    public function getExpression()
+    public function getExpression(): string
     {
         return $this->expression;
     }
 
     /**
      * Sets the output from the task
+     *
      * @param null|string|array $output
      * @return Task $this
      */
-    public function setOutput($output)
+    public function setOutput($output): Task
     {
         $this->output = $output;
 
@@ -56,6 +60,7 @@ abstract class Task implements TaskInterface
 
     /**
      * Gets the output from the task
+     *
      * @return null|string|array
      */
     public function getOutput()
@@ -67,7 +72,7 @@ abstract class Task implements TaskInterface
      * Checks whether the task is currently due
      * @return bool
      */
-    public function isRequired()
+    public function isRequired(): bool
     {
         $expression = $this->getExpression();
 

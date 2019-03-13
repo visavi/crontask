@@ -1,4 +1,5 @@
 <?php
+
 namespace Crontask;
 
 use Crontask\Interfaces\TaskInterface;
@@ -33,7 +34,7 @@ class TaskList
      * @param TaskInterface $task
      * @return TaskList $this
      */
-    public function addTask(TaskInterface $task)
+    public function addTask(TaskInterface $task): TaskList
     {
         $this->tasks[] = $task;
 
@@ -41,13 +42,35 @@ class TaskList
     }
 
     /**
+     * Set tasks
+     *
+     * @param array $tasks
+     */
+    public function setTasks($tasks)
+    {
+        $this->tasks = $tasks;
+    }
+
+    /**
      * Get Tasks
      *
      * @return array
      */
-    public function getTasks()
+    public function getTasks(): array
     {
         return $this->tasks;
+    }
+
+    /**
+     * Get required tasks
+     *
+     * @return array
+     */
+    public function getTasksRequired(): array
+    {
+        return array_filter($this->tasks, function (TaskInterface $task) {
+            return $task->isRequired();
+        });
     }
 
     /**
@@ -55,7 +78,7 @@ class TaskList
      *
      * @return array
      */
-    public function getOutput()
+    public function getOutput(): array
     {
         return $this->output;
     }
@@ -65,21 +88,17 @@ class TaskList
      *
      * @return array
      */
-    public function run()
+    public function run(): array
     {
         $this->output = [];
 
-        foreach ($this->tasks as $task) {
-            if ($task->isRequired()) {
-
-                $result = $task->run();
-
-                $this->output[] = [
-                    'task'   => get_class($task),
-                    'output' => $task->getOutput(),
-                    'result' => $result,
-                ];
-            }
+        foreach ($this->getTasksRequired() as $task) {
+            $result = $task->run();
+            $this->output[] = [
+                'task'   => get_class($task),
+                'output' => $task->getOutput(),
+                'result' => $result,
+            ];
         }
 
         return $this->output;

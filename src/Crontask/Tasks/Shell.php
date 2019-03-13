@@ -20,7 +20,7 @@ class Shell extends Task
     public function run()
     {
         $output = null;
-        exec($this->getCommand().' '.implode(' ', $this->arguments), $output, $result);
+        exec($this->getCommand() . ' ' . implode(' ', $this->arguments), $output, $result);
 
         $this->setOutput($output);
 
@@ -31,7 +31,7 @@ class Shell extends Task
      * @param string $command
      * @return $this
      */
-    public function setCommand($command)
+    public function setCommand($command): self
     {
         $this->command = $command;
 
@@ -41,7 +41,7 @@ class Shell extends Task
     /**
      * @return string
      */
-    public function getCommand()
+    public function getCommand(): string
     {
         return $this->command;
     }
@@ -50,7 +50,7 @@ class Shell extends Task
      * @param mixed $argument
      * @return $this
      */
-    public function addArgument($argument)
+    public function addArgument($argument): self
     {
         $this->arguments[] = $argument;
 
@@ -60,7 +60,7 @@ class Shell extends Task
     /**
      * @return array
      */
-    public function getArguments()
+    public function getArguments(): array
     {
         return $this->arguments;
     }
