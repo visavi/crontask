@@ -2,21 +2,21 @@
     "name": "visavi/crontask",
     "description": "Simple PHP cron tasks",
     "keywords": ["php", "cron", "crontab", "scheduler", "task"],
-    "homepage": "http://visavi.net",
+    "homepage": "https://visavi.net",
     "license": "MIT",
     "authors": [
         {
             "name": "Alexander Grigorev",
             "email": "visavi.net@mail.ru",
-            "homepage": "http://visavi.net"
+            "homepage": "https://visavi.net"
         }
     ],
     "require": {
-        "php": ">=7.0",
-        "dragonmantank/cron-expression": "^2.0"
+        "php": ">=7.2",
+        "dragonmantank/cron-expression": "^3.1"
     },
     "require-dev": {
-        "phpunit/phpunit": "^6.4"
+        "phpunit/phpunit": "^7.0|^8.0|^9.0"
     },
     "autoload": {
         "psr-4": {
