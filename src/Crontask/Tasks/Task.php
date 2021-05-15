@@ -80,7 +80,7 @@ abstract class Task implements TaskInterface
             return false;
         }
 
-        $cron = CronExpression::factory($expression);
+        $cron = new CronExpression($expression);
 
         return $cron->isDue();
     }
